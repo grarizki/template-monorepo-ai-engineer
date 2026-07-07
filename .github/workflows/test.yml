@@ -50,6 +50,9 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Enable pnpm
+        run: corepack enable && corepack prepare pnpm@9 --activate
+
       - name: Run Web tests
         run: |
           cd apps/web
