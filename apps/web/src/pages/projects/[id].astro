@@ -1,11 +1,13 @@
 ---
+import Base from "../../layouts/Base.astro";
+
 const API_BASE = import.meta.env.PUBLIC_API_URL || "http://localhost:8000";
 const { id } = Astro.params;
 
-let _project = null;
+let project = null;
 try {
   const res = await fetch(`${API_BASE}/api/v1/projects/${id}`);
-  _project = await res.json();
+  project = await res.json();
 } catch (_e) {}
 ---
 

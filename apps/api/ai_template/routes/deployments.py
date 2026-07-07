@@ -3,7 +3,7 @@
 from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.orm import Session
 
 from ai_template.db import Deployment, get_db
@@ -30,8 +30,7 @@ class DeploymentResponse(BaseModel):
     deployed_at: datetime | None
     url: str | None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 @router.get("/", response_model=list[DeploymentResponse])
@@ -58,12 +57,12 @@ def create_deployment(data: DeploymentCreate, db: Session = Depends(get_db)):
 
 @router.put("/{deployment_id}", response_model=DeploymentResponse)
 def update_deployment(
-    deployment_id: int, data: DeploymentCreate, db: Session = Depends(get_db)
+    deployment_id: int, data: DeploymentUpdate, db: Session = Depends(get_db)
 ):
     deployment = db.query(Deployment).filter(Deployment.id == deployment_id).first()
     if not deployment:
         raise HTTPException(status_code=404, detail="Deployment not found")
-    for k, v in data.model_dump().items():
+    for k, v in data.model_dump(exclude_unset=True).items():
         setattr(deployment, k, v)
     db.commit()
     db.refresh(deployment)

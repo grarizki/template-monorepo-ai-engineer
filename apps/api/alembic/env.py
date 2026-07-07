@@ -11,11 +11,13 @@ from alembic import context
 # Add parent dir to path so ai_template is importable
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from ai_template.db import Base
+from ai_template.db import Base, DATABASE_URL
 
 config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
+
+config.set_main_option("sqlalchemy.url", DATABASE_URL)
 
 target_metadata = Base.metadata
 

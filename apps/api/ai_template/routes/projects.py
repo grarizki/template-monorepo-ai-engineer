@@ -3,7 +3,7 @@
 from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.orm import Session
 
 from ai_template.db import Project, get_db
@@ -30,8 +30,7 @@ class ProjectResponse(BaseModel):
     created_at: datetime | None
     image_url: str | None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 @router.get("/", response_model=list[ProjectResponse])
@@ -57,11 +56,11 @@ def create_project(data: ProjectCreate, db: Session = Depends(get_db)):
 
 
 @router.put("/{project_id}", response_model=ProjectResponse)
-def update_project(project_id: int, data: ProjectCreate, db: Session = Depends(get_db)):
+def update_project(project_id: int, data: ProjectUpdate, db: Session = Depends(get_db)):
     project = db.query(Project).filter(Project.id == project_id).first()
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
-    for k, v in data.model_dump().items():
+    for k, v in data.model_dump(exclude_unset=True).items():
         setattr(project, k, v)
     db.commit()
     db.refresh(project)

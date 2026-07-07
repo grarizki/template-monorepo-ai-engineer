@@ -16,7 +16,7 @@ dependencies = [
     "numpy==1.26.4",
     "sqlalchemy==2.0.30",
     "scalar-fastapi==1.8.2",
-    "pydantic==2.7.3",
+    "pydantic==2.13.4",
 ]
 
 [project.scripts]

@@ -6,7 +6,7 @@ from datetime import datetime
 
 import numpy as np
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.orm import Session
 
 from ai_template.db import Benchmark, Model, get_db
@@ -21,6 +21,12 @@ class BenchmarkCreate(BaseModel):
     dataset_size: int | None = 100
 
 
+class BenchmarkUpdate(BaseModel):
+    model_id: int | None = None
+    name: str | None = None
+    dataset_size: int | None = None
+
+
 class BenchmarkResponse(BaseModel):
     id: int
     model_id: int | None
@@ -30,8 +36,7 @@ class BenchmarkResponse(BaseModel):
     duration_ms: int | None
     created_at: datetime | None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 @router.get("/", response_model=list[BenchmarkResponse])
@@ -86,3 +91,26 @@ def run_benchmark(data: BenchmarkCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(bench)
     return bench
+
+
+@router.patch("/{benchmark_id}", response_model=BenchmarkResponse)
+def patch_benchmark(
+    benchmark_id: int, data: BenchmarkUpdate, db: Session = Depends(get_db)
+):
+    bench = db.query(Benchmark).filter(Benchmark.id == benchmark_id).first()
+    if not bench:
+        raise HTTPException(status_code=404, detail="Benchmark not found")
+    for k, v in data.model_dump(exclude_unset=True).items():
+        setattr(bench, k, v)
+    db.commit()
+    db.refresh(bench)
+    return bench
+
+
+@router.delete("/{benchmark_id}", status_code=204)
+def delete_benchmark(benchmark_id: int, db: Session = Depends(get_db)):
+    bench = db.query(Benchmark).filter(Benchmark.id == benchmark_id).first()
+    if not bench:
+        raise HTTPException(status_code=404, detail="Benchmark not found")
+    db.delete(bench)
+    db.commit()

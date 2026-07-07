@@ -3,7 +3,7 @@
 from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.orm import Session
 
 from ai_template.db import TrainingScript, get_db
@@ -33,8 +33,7 @@ class TrainingScriptResponse(BaseModel):
     created_at: datetime | None
     image_url: str | None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 @router.get("/", response_model=list[TrainingScriptResponse])
@@ -61,12 +60,12 @@ def create_training_script(data: TrainingScriptCreate, db: Session = Depends(get
 
 @router.put("/{script_id}", response_model=TrainingScriptResponse)
 def update_training_script(
-    script_id: int, data: TrainingScriptCreate, db: Session = Depends(get_db)
+    script_id: int, data: TrainingScriptUpdate, db: Session = Depends(get_db)
 ):
     script = db.query(TrainingScript).filter(TrainingScript.id == script_id).first()
     if not script:
         raise HTTPException(status_code=404, detail="Training script not found")
-    for k, v in data.model_dump().items():
+    for k, v in data.model_dump(exclude_unset=True).items():
         setattr(script, k, v)
     db.commit()
     db.refresh(script)

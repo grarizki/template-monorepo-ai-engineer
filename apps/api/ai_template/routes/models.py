@@ -3,7 +3,7 @@
 from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.orm import Session
 
 from ai_template.db import Model, get_db
@@ -36,8 +36,7 @@ class ModelResponse(BaseModel):
     artifact_path: str | None
     metrics: dict | None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 @router.get("/", response_model=list[ModelResponse])
@@ -63,11 +62,11 @@ def create_model(data: ModelCreate, db: Session = Depends(get_db)):
 
 
 @router.put("/{model_id}", response_model=ModelResponse)
-def update_model(model_id: int, data: ModelCreate, db: Session = Depends(get_db)):
+def update_model(model_id: int, data: ModelUpdate, db: Session = Depends(get_db)):
     model = db.query(Model).filter(Model.id == model_id).first()
     if not model:
         raise HTTPException(status_code=404, detail="Model not found")
-    for k, v in data.model_dump().items():
+    for k, v in data.model_dump(exclude_unset=True).items():
         setattr(model, k, v)
     db.commit()
     db.refresh(model)
