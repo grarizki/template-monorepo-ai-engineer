@@ -1,0 +1,49 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const API_BASE = import.meta.env.PUBLIC_API_URL || "http://localhost:8000";
+const { ticker } = Astro.params;
+
+let stock: any = null;
+try {
+  const res = await fetch(`${API_BASE}/stocks/${ticker}`);
+  if (res.ok) stock = await res.json();
+} catch (_e) {}
+---
+
+<Base title={stock?.name || 'Stock'}>
+  {stock ? (
+    <>
+      <a href="/stocks" class="text-gray-500 hover:text-white text-sm mb-4 inline-block">&larr; Back to Stocks</a>
+      <div class="flex items-baseline gap-4 mb-6">
+        <h1 class="text-3xl font-bold">{stock.ticker}</h1>
+        <span class="text-gray-400">{stock.name}</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
+          <p class="text-gray-400 text-sm mb-1">Sector</p>
+          <p class="text-lg font-semibold">{stock.sector || 'N/A'}</p>
+        </div>
+        <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
+          <p class="text-gray-400 text-sm mb-1">Current Price</p>
+          <p class="text-lg font-semibold text-green-400">{stock.current_price ? `Rp ${stock.current_price.toLocaleString()}` : 'N/A'}</p>
+        </div>
+      </div>
+
+      {stock.description && (
+        <div class="bg-gray-900 rounded-lg p-6 border border-gray-800 mb-6">
+          <p class="text-gray-400 text-sm mb-2">Description</p>
+          <p class="text-gray-300">{stock.description}</p>
+        </div>
+      )}
+
+      <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
+        <p class="text-gray-400 text-sm mb-2">Raw JSON</p>
+        <pre class="text-sm text-gray-300 overflow-x-auto"><code>{JSON.stringify(stock, null, 2)}</code></pre>
+      </div>
+    </>
+  ) : (
+    <p class="text-gray-500">Stock not found.</p>
+  )}
+</Base>

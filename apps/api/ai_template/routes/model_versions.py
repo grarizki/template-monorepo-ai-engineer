@@ -2,11 +2,10 @@
 
 from datetime import datetime
 
+from ai_template.db import Model, ModelVersion, get_db
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy.orm import Session
-
-from ai_template.db import Model, ModelVersion, get_db
 
 router = APIRouter(prefix="/api/v1/models/{model_id}/versions", tags=["model-versions"])
 
