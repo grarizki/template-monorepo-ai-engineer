@@ -7,6 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
+![Dashboard](apps/web/public/screenshots/dashboard.png)
+
 ## Why?
 
 Starting an AI project shouldn't require stitching together five repos. This template gives you a **FastAPI backend** with a full CRUD API, mocked training pipeline, artifact tracking, and benchmark runner — paired with an **Astro dashboard** to visualize everything. One `make demo` and you're up.
