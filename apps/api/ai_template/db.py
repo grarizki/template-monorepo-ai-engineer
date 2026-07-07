@@ -81,6 +81,17 @@ class Benchmark(Base):
     created_at = Column(DateTime, server_default=func.now())
 
 
+class ModelVersion(Base):
+    __tablename__ = "model_versions"
+
+    id = Column(Integer, primary_key=True)
+    model_id = Column(Integer, ForeignKey("models.id"), nullable=False)
+    version = Column(String, nullable=False)
+    metrics = Column(JSON)
+    artifact_path = Column(String)
+    created_at = Column(DateTime, server_default=func.now())
+
+
 def init_db():
     """Create all tables."""
     Base.metadata.create_all(bind=engine)

@@ -12,6 +12,7 @@ from ai_template.db import init_db
 from ai_template.routes import (
     benchmarks,
     deployments,
+    model_versions,
     models,
     projects,
     training_scripts,
@@ -43,6 +44,7 @@ app = FastAPI(
 
 app.include_router(projects.router)
 app.include_router(models.router)
+app.include_router(model_versions.router)
 app.include_router(training_scripts.router)
 app.include_router(deployments.router)
 app.include_router(benchmarks.router)
