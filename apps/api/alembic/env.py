@@ -5,21 +5,23 @@ from logging.config import fileConfig
 from pathlib import Path
 
 from sqlalchemy import engine_from_config, pool
+from sqlmodel import SQLModel
 
 from alembic import context
 
 # Add parent dir to path so ai_template is importable
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from ai_template.db import Base, DATABASE_URL
+from ai_template.core.settings import settings
+from ai_template.models.database import Stocks, User  # noqa: F401
 
 config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-config.set_main_option("sqlalchemy.url", DATABASE_URL)
+config.set_main_option("sqlalchemy.url", settings.database_url)
 
-target_metadata = Base.metadata
+target_metadata = SQLModel.metadata
 
 
 def run_migrations_offline():

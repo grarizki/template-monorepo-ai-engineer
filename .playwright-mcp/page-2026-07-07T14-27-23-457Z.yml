@@ -1,0 +1,29 @@
+- generic [active] [ref=f3e1]:
+  - navigation [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link "AI Template" [ref=f3e4] [cursor=pointer]:
+        - /url: /
+      - link "Projects" [ref=f3e5] [cursor=pointer]:
+        - /url: /projects
+      - link "Models" [ref=f3e6] [cursor=pointer]:
+        - /url: /models
+      - link "Deployments" [ref=f3e7] [cursor=pointer]:
+        - /url: /deployments
+      - link "API Docs" [ref=f3e8] [cursor=pointer]:
+        - /url: http://localhost:8000/scalar
+  - main [ref=f3e9]:
+    - heading "Deployments" [level=1] [ref=f3e11]
+    - paragraph [ref=f3e12]: No deployments yet.
+  - generic [ref=f3e15]:
+    - button "Menu" [ref=f3e16]:
+      - img [ref=f3e18]
+      - generic: Menu
+    - button "Inspect" [ref=f3e22]:
+      - img [ref=f3e24]
+      - generic: Inspect
+    - button "Audit" [ref=f3e26]:
+      - img [ref=f3e28]
+      - generic: Audit
+    - button "Settings" [ref=f3e31]:
+      - img [ref=f3e33]
+      - generic: Settings
