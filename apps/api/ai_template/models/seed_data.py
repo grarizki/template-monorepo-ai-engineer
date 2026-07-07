@@ -1,47 +1,42 @@
-from sqlmodel import Session, select
+from sqlmodel import Session
 
-from ai_template.models.database import Stocks
+from ai_template.models.database import Deployment, Model, Project
 from ai_template.models.engine import engine
 
 
-def seed_stocks() -> None:
-    dummy_stocks = [
+def seed_data():
+    dummy_projects = [
+        {"name": "AI Research", "description": "Machine learning research project"},
+        {"name": "Web App", "description": "Full-stack web application"},
+    ]
+
+    dummy_models = [
         {
-            "ticker": "BBCA",
-            "name": "PT Bank Central Asia Tbk",
-            "sector": "Banking",
-            "current_price": 9800.0,
-            "description": "Largest private bank in Indonesia by market capitalization",
+            "name": "GPT-2 Fine-tuned",
+            "description": "Fine-tuned language model",
+            "metrics": {"accuracy": 0.89, "loss": 0.11},
         },
         {
-            "ticker": "BMRI",
-            "name": "PT Bank Mandiri (Persero) Tbk",
-            "sector": "Banking",
-            "current_price": 6250.0,
-            "description": "Indonesia's largest bank by assets",
-        },
-        {
-            "ticker": "BBRI",
-            "name": "PT Bank Rakyat Indonesia (Persero) Tbk",
-            "sector": "Banking",
-            "current_price": 5100.0,
-            "description": "State-owned bank focusing on micro and small enterprises",
-        },
-        {
-            "ticker": "BUMI",
-            "name": "PT Bumi Resources Tbk",
-            "sector": "Mining",
-            "current_price": 142.0,
-            "description": "Coal mining company operating in Kalimantan",
+            "name": "Image Classifier",
+            "description": "CNN for image classification",
+            "metrics": {"accuracy": 0.95, "loss": 0.05},
         },
     ]
 
+    dummy_deployments = [
+        {"status": "deployed", "url": "https://api.example.com/v1"},
+        {"status": "pending"},
+    ]
+
     with Session(engine) as session:
-        for stock_data in dummy_stocks:
-            existing = session.exec(
-                select(Stocks).where(Stocks.ticker == stock_data["ticker"])
-            ).first()
-            if not existing:
-                stock = Stocks(**stock_data)
-                session.add(stock)
+        for p in dummy_projects:
+            session.add(Project(**p))
+        for m in dummy_models:
+            session.add(Model(**m))
+        for d in dummy_deployments:
+            session.add(Deployment(**d))
         session.commit()
+
+
+if __name__ == "__main__":
+    seed_data()
