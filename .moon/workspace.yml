@@ -1,0 +1,37 @@
+moon:
+  version: "1.0.0"
+
+workspace:
+  projects:
+    - "apps/*"
+
+vcs:
+  manager: "git"
+  defaultBranch: "main"
+  sync: true
+  hooks:
+    pre-commit:
+      - "pnpm biome check --staged --write --no-errors-on-unmatched"
+      - "cd apps/api && ruff check . --fix && ruff format ."
+    pre-push:
+      - "cd apps/api && python -m pytest tests/ -v"
+
+tasks:
+  build:
+    command: "build"
+    inputs:
+      - "src/**"
+      - "package.json"
+  dev:
+    command: "dev"
+    local: true
+    persistent: true
+  lint:
+    command: "biome check ."
+    inputs:
+      - "src/**"
+  test:
+    command: "pytest"
+    inputs:
+      - "tests/**"
+      - "src/**"

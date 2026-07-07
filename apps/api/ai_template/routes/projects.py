@@ -1,7 +1,6 @@
 """Project routes - full CRUD."""
 
 from datetime import datetime
-from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -14,22 +13,22 @@ router = APIRouter(prefix="/api/v1/projects", tags=["projects"])
 
 class ProjectCreate(BaseModel):
     name: str
-    description: Optional[str] = None
-    image_url: Optional[str] = None
+    description: str | None = None
+    image_url: str | None = None
 
 
 class ProjectUpdate(BaseModel):
-    name: Optional[str] = None
-    description: Optional[str] = None
-    image_url: Optional[str] = None
+    name: str | None = None
+    description: str | None = None
+    image_url: str | None = None
 
 
 class ProjectResponse(BaseModel):
     id: int
     name: str
-    description: Optional[str]
-    created_at: Optional[datetime]
-    image_url: Optional[str]
+    description: str | None
+    created_at: datetime | None
+    image_url: str | None
 
     class Config:
         from_attributes = True

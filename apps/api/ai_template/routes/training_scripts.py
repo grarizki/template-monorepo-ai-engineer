@@ -1,7 +1,6 @@
 """Training script routes - full CRUD."""
 
 from datetime import datetime
-from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -14,25 +13,25 @@ router = APIRouter(prefix="/api/v1/training-scripts", tags=["training-scripts"])
 
 class TrainingScriptCreate(BaseModel):
     name: str
-    description: Optional[str] = None
-    model_id: Optional[int] = None
-    image_url: Optional[str] = None
+    description: str | None = None
+    model_id: int | None = None
+    image_url: str | None = None
 
 
 class TrainingScriptUpdate(BaseModel):
-    name: Optional[str] = None
-    description: Optional[str] = None
-    model_id: Optional[int] = None
-    image_url: Optional[str] = None
+    name: str | None = None
+    description: str | None = None
+    model_id: int | None = None
+    image_url: str | None = None
 
 
 class TrainingScriptResponse(BaseModel):
     id: int
     name: str
-    description: Optional[str]
-    model_id: Optional[int]
-    created_at: Optional[datetime]
-    image_url: Optional[str]
+    description: str | None
+    model_id: int | None
+    created_at: datetime | None
+    image_url: str | None
 
     class Config:
         from_attributes = True

@@ -1,7 +1,6 @@
 """Deployment routes - full CRUD."""
 
 from datetime import datetime
-from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -15,21 +14,21 @@ router = APIRouter(prefix="/api/v1/deployments", tags=["deployments"])
 class DeploymentCreate(BaseModel):
     model_id: int
     status: str = "pending"
-    url: Optional[str] = None
+    url: str | None = None
 
 
 class DeploymentUpdate(BaseModel):
-    model_id: Optional[int] = None
-    status: Optional[str] = None
-    url: Optional[str] = None
+    model_id: int | None = None
+    status: str | None = None
+    url: str | None = None
 
 
 class DeploymentResponse(BaseModel):
     id: int
-    model_id: Optional[int]
-    status: Optional[str]
-    deployed_at: Optional[datetime]
-    url: Optional[str]
+    model_id: int | None
+    status: str | None
+    deployed_at: datetime | None
+    url: str | None
 
     class Config:
         from_attributes = True

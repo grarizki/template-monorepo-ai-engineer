@@ -1,7 +1,6 @@
 """Model routes - full CRUD."""
 
 from datetime import datetime
-from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -14,28 +13,28 @@ router = APIRouter(prefix="/api/v1/models", tags=["models"])
 
 class ModelCreate(BaseModel):
     name: str
-    description: Optional[str] = None
-    project_id: Optional[int] = None
-    artifact_path: Optional[str] = None
-    metrics: Optional[dict] = None
+    description: str | None = None
+    project_id: int | None = None
+    artifact_path: str | None = None
+    metrics: dict | None = None
 
 
 class ModelUpdate(BaseModel):
-    name: Optional[str] = None
-    description: Optional[str] = None
-    project_id: Optional[int] = None
-    artifact_path: Optional[str] = None
-    metrics: Optional[dict] = None
+    name: str | None = None
+    description: str | None = None
+    project_id: int | None = None
+    artifact_path: str | None = None
+    metrics: dict | None = None
 
 
 class ModelResponse(BaseModel):
     id: int
     name: str
-    description: Optional[str]
-    project_id: Optional[int]
-    created_at: Optional[datetime]
-    artifact_path: Optional[str]
-    metrics: Optional[dict]
+    description: str | None
+    project_id: int | None
+    created_at: datetime | None
+    artifact_path: str | None
+    metrics: dict | None
 
     class Config:
         from_attributes = True

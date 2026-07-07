@@ -2,11 +2,15 @@
   "name": "ai-template-monorepo",
   "private": true,
   "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "lint": "turbo lint"
+    "prepare": "husky",
+    "dev": "moon run :dev",
+    "build": "moon run :build",
+    "lint": "moon run :lint",
+    "format": "biome format --write ."
   },
   "devDependencies": {
-    "turbo": "^2.0.0"
+    "@biomejs/biome": "2.4.5",
+    "@moonrepo/cli": "^2.2.3",
+    "husky": "^9.1.7"
   }
 }

@@ -3,17 +3,17 @@
 from pathlib import Path
 
 from sqlalchemy import (
+    JSON,
     Column,
     DateTime,
     ForeignKey,
     Integer,
-    JSON,
     String,
     Text,
     create_engine,
     func,
 )
-from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 DB_PATH = Path(__file__).resolve().parent.parent / "db.sqlite"
 DATABASE_URL = f"sqlite:///{DB_PATH}"
@@ -67,6 +67,18 @@ class Deployment(Base):
     status = Column(String, default="pending")
     deployed_at = Column(DateTime, server_default=func.now())
     url = Column(String)
+
+
+class Benchmark(Base):
+    __tablename__ = "benchmarks"
+
+    id = Column(Integer, primary_key=True)
+    model_id = Column(Integer, ForeignKey("models.id"))
+    name = Column(String, nullable=False)
+    dataset_size = Column(Integer)
+    metrics = Column(JSON)
+    duration_ms = Column(Integer)
+    created_at = Column(DateTime, server_default=func.now())
 
 
 def init_db():

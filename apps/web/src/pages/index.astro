@@ -1,11 +1,9 @@
 ---
-import Base from "../layouts/Base.astro";
-
 const API_BASE = import.meta.env.PUBLIC_API_URL || "http://localhost:8000";
 
-let projects = [];
-let models = [];
-let deployments = [];
+let _projects = [];
+let _models = [];
+let _deployments = [];
 
 try {
   const [pRes, mRes, dRes] = await Promise.all([
@@ -13,10 +11,10 @@ try {
     fetch(`${API_BASE}/api/v1/models`),
     fetch(`${API_BASE}/api/v1/deployments`),
   ]);
-  projects = await pRes.json();
-  models = await mRes.json();
-  deployments = await dRes.json();
-} catch (e) {
+  _projects = await pRes.json();
+  _models = await mRes.json();
+  _deployments = await dRes.json();
+} catch (_e) {
   // API not running
 }
 ---
