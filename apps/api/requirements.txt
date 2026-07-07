@@ -1,0 +1,11 @@
+fastapi==0.139.0
+uvicorn==0.50.2
+typer==0.26.8
+rich==15.0.0
+alembic==1.18.5
+ruff==0.15.20
+numpy==2.5.1
+sqlalchemy==2.0.51
+scalar-fastapi==1.8.2
+pydantic==2.13.4
+httpx==0.28.1
