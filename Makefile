@@ -1,4 +1,4 @@
-.PHONY: install dev-api dev-web dev lint format migrate demo test update docker-build docker-up docker-down start
+.PHONY: install dev-api dev-web dev lint format migrate demo test test-api test-web update docker-build docker-up docker-down start
 
 install:
 	cd apps/api && uv venv && uv pip install -r requirements.txt
@@ -27,8 +27,13 @@ migrate:
 demo:
 	cd apps/api && python -m ai_template.cli demo --model demo_model
 
-test:
-	cd apps/api && python -m pytest tests/ -v
+test-api:
+	cd apps/api && . .venv/bin/activate && python -m pytest tests/ -v
+
+test-web:
+	cd apps/web && pnpm test
+
+test: test-api test-web
 
 docker-build:
 	docker compose build
