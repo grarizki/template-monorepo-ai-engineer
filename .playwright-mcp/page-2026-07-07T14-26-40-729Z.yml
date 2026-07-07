@@ -1,0 +1,28 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "AI Template" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - link "Projects" [ref=e5] [cursor=pointer]:
+        - /url: /projects
+      - link "Models" [ref=e6] [cursor=pointer]:
+        - /url: /models
+      - link "Deployments" [ref=e7] [cursor=pointer]:
+        - /url: /deployments
+      - link "API Docs" [ref=e8] [cursor=pointer]:
+        - /url: http://localhost:8000/scalar
+  - main [ref=e9]:
+    - heading "Dashboard" [level=1] [ref=e10]
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - paragraph [ref=e13]: Projects
+        - paragraph [ref=e14]: "2"
+      - generic [ref=e15]:
+        - paragraph [ref=e16]: Models
+        - paragraph [ref=e17]: "2"
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: Deployments
+        - paragraph [ref=e20]: "0"
+    - generic [ref=e21]:
+      - heading "Quick Start" [level=2] [ref=e22]
+      - code [ref=e24]: cd apps/api uv add -r requirements.txt alembic upgrade head python -m ai_template.cli demo --model demo_model

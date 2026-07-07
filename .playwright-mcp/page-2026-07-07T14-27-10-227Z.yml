@@ -1,0 +1,278 @@
+- generic [ref=f2e3]:
+  - generic [ref=f2e4]:
+    - navigation "Sidebar for AI Template API" [ref=f2e5]:
+      - generic [ref=f2e6]:
+        - search [ref=f2e7] [cursor=pointer]:
+          - img [ref=f2e8]
+          - generic [ref=f2e11]:
+            - generic [ref=f2e12]: Open Search
+            - text: Search
+          - generic [ref=f2e13]:
+            - generic [ref=f2e14]: "Keyboard Shortcut:"
+            - generic [ref=f2e15]:
+              - generic [ref=f2e16]: Command
+              - text: ⌘ k
+        - button "Ask AI" [ref=f2e17] [cursor=pointer]:
+          - img [ref=f2e18]
+          - text: Ask AI
+      - list [ref=f2e21]:
+        - listitem [ref=f2e22]:
+          - button "Introduction" [ref=f2e23] [cursor=pointer]:
+            - generic [ref=f2e24]: Introduction
+        - listitem [ref=f2e25]:
+          - button "projects Close Group" [expanded] [ref=f2e27] [cursor=pointer]:
+            - generic [ref=f2e28]: projects
+            - generic [ref=f2e29]:
+              - img [ref=f2e30]
+              - generic [ref=f2e33]: Close Group
+          - list [ref=f2e34]:
+            - listitem [ref=f2e35]:
+              - 'button "List Projects HTTP Method: GET" [ref=f2e36] [cursor=pointer]':
+                - generic [ref=f2e41]: List Projects
+                - generic [ref=f2e42]:
+                  - generic [ref=f2e43]: "HTTP Method:"
+                  - text: GET
+            - listitem [ref=f2e44]:
+              - 'button "Create Project HTTP Method: POST" [ref=f2e45] [cursor=pointer]':
+                - generic [ref=f2e50]: Create Project
+                - generic [ref=f2e51]:
+                  - generic [ref=f2e52]: "HTTP Method:"
+                  - text: POST
+            - listitem [ref=f2e53]:
+              - 'button "Get Project HTTP Method: GET" [ref=f2e54] [cursor=pointer]':
+                - generic [ref=f2e59]: Get Project
+                - generic [ref=f2e60]:
+                  - generic [ref=f2e61]: "HTTP Method:"
+                  - text: GET
+            - listitem [ref=f2e62]:
+              - 'button "Update Project HTTP Method: PUT" [ref=f2e63] [cursor=pointer]':
+                - generic [ref=f2e68]: Update Project
+                - generic [ref=f2e69]:
+                  - generic [ref=f2e70]: "HTTP Method:"
+                  - text: PUT
+            - listitem [ref=f2e71]:
+              - 'button "Patch Project HTTP Method: PATCH" [ref=f2e72] [cursor=pointer]':
+                - generic [ref=f2e77]: Patch Project
+                - generic [ref=f2e78]:
+                  - generic [ref=f2e79]: "HTTP Method:"
+                  - text: PATCH
+            - listitem [ref=f2e80]:
+              - 'button "Delete Project HTTP Method: DEL" [ref=f2e81] [cursor=pointer]':
+                - generic [ref=f2e86]: Delete Project
+                - generic [ref=f2e87]:
+                  - generic [ref=f2e88]: "HTTP Method:"
+                  - text: DEL
+        - listitem [ref=f2e89]:
+          - button "models Open Group" [ref=f2e91] [cursor=pointer]:
+            - generic [ref=f2e92]: models
+            - generic [ref=f2e93]:
+              - img [ref=f2e94]
+              - generic [ref=f2e97]: Open Group
+        - listitem [ref=f2e98]:
+          - button "training-scripts Open Group" [ref=f2e100] [cursor=pointer]:
+            - generic [ref=f2e101]:
+              - text: training
+              - text: "-scripts"
+            - generic [ref=f2e102]:
+              - img [ref=f2e103]
+              - generic [ref=f2e106]: Open Group
+        - listitem [ref=f2e107]:
+          - button "deployments Open Group" [ref=f2e109] [cursor=pointer]:
+            - generic [ref=f2e110]: deployments
+            - generic [ref=f2e111]:
+              - img [ref=f2e112]
+              - generic [ref=f2e115]: Open Group
+        - listitem [ref=f2e116]:
+          - button "benchmarks Open Group" [ref=f2e118] [cursor=pointer]:
+            - generic [ref=f2e119]: benchmarks
+            - generic [ref=f2e120]:
+              - img [ref=f2e121]
+              - generic [ref=f2e124]: Open Group
+        - listitem [ref=f2e125]:
+          - button "health Open Group" [ref=f2e127] [cursor=pointer]:
+            - generic [ref=f2e128]: health
+            - generic [ref=f2e129]:
+              - img [ref=f2e130]
+              - generic [ref=f2e133]: Open Group
+        - listitem [ref=f2e134]:
+          - button "inference Open Group" [ref=f2e136] [cursor=pointer]:
+            - generic [ref=f2e137]: inference
+            - generic [ref=f2e138]:
+              - img [ref=f2e139]
+              - generic [ref=f2e142]: Open Group
+        - listitem [ref=f2e143]:
+          - button "Models Open Group" [ref=f2e145] [cursor=pointer]:
+            - generic [ref=f2e146]: Models
+            - generic [ref=f2e147]:
+              - img [ref=f2e148]
+              - generic [ref=f2e151]: Open Group
+      - generic [ref=f2e153]:
+        - generic [ref=f2e154]:
+          - generic [ref=f2e155] [cursor=pointer]:
+            - img [ref=f2e156]
+            - text: VS Code
+            - img [ref=f2e158]
+          - generic [ref=f2e161] [cursor=pointer]:
+            - img [ref=f2e162]
+            - text: Cursor
+            - img [ref=f2e164]
+          - generic [ref=f2e167]:
+            - img [ref=f2e168]
+            - text: Generate MCP
+            - img [ref=f2e172]
+        - generic [ref=f2e175]:
+          - link "Powered by Scalar" [ref=f2e177] [cursor=pointer]:
+            - /url: https://www.scalar.com
+          - button "Set light mode" [pressed] [ref=f2e178] [cursor=pointer]:
+            - generic "Set light mode" [ref=f2e181]
+    - main "API documentation for AI Template API" [ref=f2e184]:
+      - generic [ref=f2e185]:
+        - generic "Developer Tools" [ref=f2e186]:
+          - generic [ref=f2e187]:
+            - button "Developer Tools" [ref=f2e190] [cursor=pointer]:
+              - img [ref=f2e191]
+              - text: Developer Tools
+            - button "Configure" [ref=f2e195] [cursor=pointer]:
+              - text: Configure
+              - img [ref=f2e196]
+            - button "Share" [ref=f2e200] [cursor=pointer]:
+              - text: Share
+              - img [ref=f2e201]
+            - button "Deploy" [ref=f2e205] [cursor=pointer]:
+              - text: Deploy
+              - img [ref=f2e206]
+        - region "Introduction" [ref=f2e210]:
+          - generic [ref=f2e211]:
+            - generic [ref=f2e212]:
+              - generic [ref=f2e213]: v0.1.0
+              - generic [ref=f2e214]: OpenAPI 3.1.0
+            - heading "AI Template API" [level=1] [ref=f2e217]
+            - generic [ref=f2e218]:
+              - generic [ref=f2e220]:
+                - button "Download OpenAPI Document" [ref=f2e221] [cursor=pointer]:
+                  - generic [ref=f2e222]: Download OpenAPI Document
+                - button "Download OpenAPI Document" [ref=f2e223] [cursor=pointer]:
+                  - generic [ref=f2e224]: Download OpenAPI Document
+              - generic [ref=f2e229]:
+                - generic [ref=f2e230]: Client Libraries
+                - tablist "Client Libraries" [ref=f2e231]:
+                  - generic [ref=f2e232]:
+                    - tab "Shell" [selected] [ref=f2e233] [cursor=pointer]:
+                      - img [ref=f2e235]
+                      - generic [ref=f2e237]: Shell
+                    - tab "Ruby" [ref=f2e238] [cursor=pointer]:
+                      - img [ref=f2e240]
+                      - generic [ref=f2e242]: Ruby
+                    - tab "Node.js" [ref=f2e243] [cursor=pointer]:
+                      - img [ref=f2e245]
+                      - generic [ref=f2e248]: Node.js
+                    - tab "PHP" [ref=f2e249] [cursor=pointer]:
+                      - img [ref=f2e251]
+                      - generic [ref=f2e253]: PHP
+                    - tab "Python" [ref=f2e254] [cursor=pointer]:
+                      - img [ref=f2e256]
+                      - generic [ref=f2e258]: Python
+                    - button [ref=f2e260] [cursor=pointer]
+                - tabpanel "Shell" [ref=f2e265]: Shell Curl
+        - region "projects" [ref=f2e267]:
+          - generic [ref=f2e270]:
+            - heading "projects" [level=2] [ref=f2e272]
+            - button "Copy link" [ref=f2e273] [cursor=pointer]:
+              - img [ref=f2e274]
+              - generic [ref=f2e277]: Copy link
+          - group "projects Operations" [ref=f2e282]:
+            - generic [ref=f2e284]:
+              - generic [ref=f2e285]: projects
+              - text: Operations
+            - list "projects endpoints" [ref=f2e287]:
+              - listitem [ref=f2e288]:
+                - generic [ref=f2e289] [cursor=pointer]:
+                  - generic [ref=f2e290]: get
+                  - generic [ref=f2e291]: /api/v1/projects/
+              - listitem [ref=f2e292]:
+                - generic [ref=f2e293] [cursor=pointer]:
+                  - generic [ref=f2e294]: post
+                  - generic [ref=f2e295]: /api/v1/projects/
+              - listitem [ref=f2e296]:
+                - generic [ref=f2e297] [cursor=pointer]:
+                  - generic [ref=f2e298]: get
+                  - generic [ref=f2e299]: "/api/v1/projects/{project_id}"
+              - listitem [ref=f2e300]:
+                - generic [ref=f2e301] [cursor=pointer]:
+                  - generic [ref=f2e302]: put
+                  - generic [ref=f2e303]: "/api/v1/projects/{project_id}"
+              - listitem [ref=f2e304]:
+                - generic [ref=f2e305] [cursor=pointer]:
+                  - generic [ref=f2e306]: patch
+                  - generic [ref=f2e307]: "/api/v1/projects/{project_id}"
+              - listitem [ref=f2e308]:
+                - generic [ref=f2e309] [cursor=pointer]:
+                  - generic [ref=f2e310]: delete
+                  - generic [ref=f2e311]: "/api/v1/projects/{project_id}"
+          - region "List Projects" [ref=f2e314]:
+            - generic [ref=f2e316]:
+              - generic [ref=f2e318]:
+                - heading "List Projects" [level=3] [ref=f2e320]
+                - button "Copy link" [ref=f2e321] [cursor=pointer]:
+                  - img [ref=f2e322]
+                  - generic [ref=f2e325]: Copy link
+              - generic:
+                - group "Description"
+              - generic [ref=f2e327]:
+                - generic [ref=f2e328]: Responses
+                - list "Responses" [ref=f2e329]:
+                  - listitem [ref=f2e330]:
+                    - button "200 Successful Response" [ref=f2e331] [cursor=pointer]:
+                      - generic [ref=f2e332]:
+                        - img [ref=f2e333]
+                        - generic [ref=f2e336]: "200"
+                      - paragraph [ref=f2e339]: Successful Response
+                    - generic [ref=f2e343]: application/json
+              - generic [ref=f2e344]:
+                - group "Request Example for get/api/v1/projects/" [ref=f2e345]:
+                  - generic [ref=f2e346]:
+                    - generic [ref=f2e347]:
+                      - generic [ref=f2e348]: Request Example for
+                      - generic [ref=f2e349]: get
+                      - generic [ref=f2e350]: /api/v1/projects/
+                    - button "Shell Curl" [ref=f2e353] [cursor=pointer]:
+                      - text: Shell Curl
+                      - img [ref=f2e354]
+                  - generic [ref=f2e359]:
+                    - code [ref=f2e362]:
+                      - generic [ref=f2e363]: curl /api/v1/projects/
+                    - button [ref=f2e364] [cursor=pointer]:
+                      - img [ref=f2e365]
+                  - generic [ref=f2e374]:
+                    - generic [ref=f2e375] [cursor=pointer]:
+                      - img [ref=f2e376]
+                      - generic [ref=f2e379]: Ask AI Agent
+                      - textbox "Ask AI Agent"
+                    - button "Test Request (get /api/v1/projects/)" [ref=f2e380] [cursor=pointer]:
+                      - img [ref=f2e381]
+                      - generic [ref=f2e384]: Test Request
+                      - generic [ref=f2e385]: (get /api/v1/projects/)
+                - 'region "Status: 200" [ref=f2e386]':
+                  - generic [ref=f2e387]:
+                    - tablist [ref=f2e389]:
+                      - 'tab "Status: 200" [selected] [ref=f2e390] [cursor=pointer]':
+                        - generic [ref=f2e391]:
+                          - generic [ref=f2e392]: "Status:"
+                          - text: "200"
+                    - generic [ref=f2e394] [cursor=pointer]:
+                      - text: Show Schema
+                      - checkbox "Show Schema"
+                  - generic [ref=f2e397]:
+                    - code [ref=f2e400]: "[ { \"id\": 1, \"name\": \"string\", \"description\": \"string\", \"created_at\": \"2026-07-07T14:27:09.772Z\", \"image_url\": \"string\" } ]"
+                    - button [ref=f2e401] [cursor=pointer]:
+                      - img [ref=f2e402]
+                  - paragraph [ref=f2e413]: Successful Response
+    - generic:
+      - generic:
+        - generic: Cookies
+        - generic: Headers
+        - generic: Query Parameters
+        - generic: Code Snippet
+        - text: ⌘ ↵
+  - region "Notifications alt+T":
+    - list
