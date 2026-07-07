@@ -1,3 +1,4 @@
 #!/bin/sh
+cd "$(dirname "$0")/.." || exit 1
 cd apps/api && . .venv/bin/activate && python -m pytest tests/ -v
-cd apps/web && pnpm test
+cd ../web && pnpm test
