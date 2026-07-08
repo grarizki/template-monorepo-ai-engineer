@@ -1,5 +1,14 @@
-"""Ensure database tables exist before tests run."""
+from fastapi.testclient import TestClient
+from sqlmodel import SQLModel
 
-from ai_template.db import init_db
+from ai_template.main import app
+from ai_template.models.engine import engine
 
-init_db()
+client = TestClient(app)
+
+
+def init_test_db():
+    SQLModel.metadata.create_all(engine)
+
+
+init_test_db()

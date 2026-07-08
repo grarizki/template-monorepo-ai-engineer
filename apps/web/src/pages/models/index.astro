@@ -3,7 +3,7 @@ import Base from "../../layouts/Base.astro";
 
 const API_BASE = import.meta.env.PUBLIC_API_URL || "http://localhost:8000";
 
-let models = [];
+let models: any[] = [];
 try {
   const res = await fetch(`${API_BASE}/api/v1/models`);
   models = await res.json();
@@ -14,13 +14,12 @@ try {
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-3xl font-bold">Models</h1>
   </div>
-
   {models.length === 0 ? (
-    <p class="text-gray-500">No models yet. Train one via the API.</p>
+    <p class="text-gray-500">No models yet.</p>
   ) : (
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {models.map((m: any) => (
-        <a href={`/models/${m.id}`} class="block bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-gray-700 transition">
+        <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
           <h2 class="text-lg font-semibold mb-2">{m.name}</h2>
           <p class="text-gray-400 text-sm">{m.description || 'No description'}</p>
           {m.metrics && (
@@ -29,7 +28,7 @@ try {
               <span class="text-red-400">loss: {m.metrics.loss?.toFixed(3)}</span>
             </div>
           )}
-        </a>
+        </div>
       ))}
     </div>
   )}

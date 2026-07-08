@@ -3,9 +3,9 @@ import Base from "../layouts/Base.astro";
 
 const API_BASE = import.meta.env.PUBLIC_API_URL || "http://localhost:8000";
 
-let projects = [];
-let models = [];
-let deployments = [];
+let projects: any[] = [];
+let models: any[] = [];
+let deployments: any[] = [];
 
 try {
   const [pRes, mRes, dRes] = await Promise.all([
@@ -16,9 +16,7 @@ try {
   projects = await pRes.json();
   models = await mRes.json();
   deployments = await dRes.json();
-} catch (_e) {
-  // API not running
-}
+} catch (_e) {}
 ---
 
 <Base title="Dashboard">
@@ -42,9 +40,8 @@ try {
   <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
     <h2 class="text-xl font-semibold mb-4">Quick Start</h2>
     <pre
-      class="bg-gray-950 rounded p-4 text-sm text-gray-300 overflow-x-auto"><code>cd apps/api
-uv add -r requirements.txt
-alembic upgrade head
-python -m ai_template.cli demo --model demo_model</code></pre>
+      class="bg-gray-950 rounded p-4 text-sm text-gray-300 overflow-x-auto"><code>curl http://localhost:8000/api/v1/projects
+curl http://localhost:8000/api/v1/models
+curl http://localhost:8000/api/v1/deployments</code></pre>
   </div>
 </Base>

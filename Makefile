@@ -1,11 +1,11 @@
-.PHONY: install dev-api dev-web dev lint format migrate demo test test-api test-web update docker-build docker-up docker-down start
+.PHONY: install dev-api dev-web dev lint format migrate test test-api test-web update docker-build docker-up docker-down start
 
 install:
 	cd apps/api && uv venv && uv pip install -r requirements.txt
 	cd apps/web && pnpm install
 
 dev-api:
-	cd apps/api && . .venv/bin/activate && python -m uvicorn ai_template.server:app --reload --port 8000
+	cd apps/api && . .venv/bin/activate && python -m uvicorn ai_template.main:app --reload --port 8000
 
 dev-web:
 	cd apps/web && pnpm dev
@@ -24,9 +24,6 @@ format:
 migrate:
 	cd apps/api && alembic upgrade head
 
-demo:
-	cd apps/api && python -m ai_template.cli demo --model demo_model
-
 test-api:
 	cd apps/api && . .venv/bin/activate && python -m pytest tests/ -v
 
@@ -44,8 +41,8 @@ docker-up:
 docker-down:
 	docker compose down
 
-start: install migrate demo
+start: install migrate
 
 update:
-	cd apps/api && . .venv/bin/activate && rtk uv pip install --upgrade -r requirements.txt
+	cd apps/api && . .venv/bin/activate && uv pip install --upgrade -r requirements.txt
 	cd apps/web && pnpm update

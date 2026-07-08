@@ -3,7 +3,7 @@ import Base from "../../layouts/Base.astro";
 
 const API_BASE = import.meta.env.PUBLIC_API_URL || "http://localhost:8000";
 
-let deployments = [];
+let deployments: any[] = [];
 try {
   const res = await fetch(`${API_BASE}/api/v1/deployments`);
   deployments = await res.json();
@@ -14,7 +14,6 @@ try {
   <div class="flex items-center justify-between mb-6">
     <h1 class="text-3xl font-bold">Deployments</h1>
   </div>
-
   {deployments.length === 0 ? (
     <p class="text-gray-500">No deployments yet.</p>
   ) : (
@@ -22,24 +21,18 @@ try {
       <table class="w-full text-sm">
         <thead>
           <tr class="border-b border-gray-800 text-gray-400">
-            <th class="text-left px-4 py-3">ID</th>
-            <th class="text-left px-4 py-3">Model ID</th>
             <th class="text-left px-4 py-3">Status</th>
-            <th class="text-left px-4 py-3">Deployed At</th>
             <th class="text-left px-4 py-3">URL</th>
           </tr>
         </thead>
         <tbody>
           {deployments.map((d: any) => (
             <tr class="border-b border-gray-800 last:border-0">
-              <td class="px-4 py-3">{d.id}</td>
-              <td class="px-4 py-3">{d.model_id}</td>
               <td class="px-4 py-3">
                 <span class={`px-2 py-1 rounded text-xs ${d.status === 'deployed' ? 'bg-green-900 text-green-300' : 'bg-yellow-900 text-yellow-300'}`}>
                   {d.status}
                 </span>
               </td>
-              <td class="px-4 py-3 text-gray-400">{d.deployed_at}</td>
               <td class="px-4 py-3">
                 {d.url ? <a href={d.url} target="_blank" class="text-blue-400 hover:underline">{d.url}</a> : '-'}
               </td>
